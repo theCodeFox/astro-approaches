@@ -9,12 +9,12 @@ app = Flask(__name__)
 # second argument (methods) defaults to ['GET'], add other methods to list as required
 @app.route('/')
 def index():
-    return '<h1>Home</h1>'
+    return render_template('main.html')
 
 # quick variable example
 @app.route('/profile/<user>')
 def profile(user):
-    return f'<h2>Hello {user}!</h2>'
+    return render_template('profile.html', user=user)
 
 # check so can only be run directly
 if __name__ == "__main__":
