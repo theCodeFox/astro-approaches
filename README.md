@@ -16,7 +16,8 @@ Information app utilising NASA’a API (Asteroids - NeoWs) to track near Earth o
 ---
 
 ### **Tech**
-Python, Flask
+Python: verion 3.9.0
+Flask: version 1.1.2
 
 ---
 
