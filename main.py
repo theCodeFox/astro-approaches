@@ -12,9 +12,9 @@ def index():
     return render_template('main.html')
 
 # quick variable example
-@app.route('/profile/<user>')
-def profile(user):
-    return render_template('profile.html', user=user)
+# @app.route('/profile/<user>')
+# def profile(user):
+#     return render_template('profile.html', user=user)
 
 # check so can only be run directly
 if __name__ == "__main__":
