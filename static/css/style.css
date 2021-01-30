@@ -1,8 +1,10 @@
 body {
-  background-color: #301934;
   font-family: Arial, Helvetica, sans-serif;
   font-size: small;
   color: #f0f8ff;
+}
+div {
+  padding: 1em;
 }
 
 .main-grid {
@@ -12,25 +14,27 @@ body {
     padding: 0;
     grid-template-columns: 10% 40% 40% 10%;
     grid-template-areas:
-    'left header header right'
     'left main main-image right'
     'left metrics metrics right'
     'left footer footer right';
 }
-.header-item {
-  grid-area: header;
-}
 .main-item {
   grid-area: main;
+  background: #301934;
 }
 .main-image-item {
   grid-area: main-image;
+  background: #301934;
 }
 .metrics-item {
   grid-area: metrics;
+  background: #301934;
 }
 .footer-item {
   grid-area: footer;
+  background: #301934;
+  font-size: xx-small;
+  padding: 1em;
 }
 .info-background {
   background: #301934;
