@@ -10,11 +10,12 @@ body {
     justify-content: center;
     margin: 0;
     padding: 0;
-    grid-template-columns: 10% 80% 10%;
+    grid-template-columns: 10% 40% 40% 10%;
     grid-template-areas:
-    'left header right'
-    'left main right'
-    'left footer right';
+    'left header header right'
+    'left main main-image right'
+    'left metrics metrics right'
+    'left footer footer right';
 }
 .header-item {
   grid-area: header;
@@ -22,6 +23,17 @@ body {
 .main-item {
   grid-area: main;
 }
+.main-image-item {
+  grid-area: main-image;
+}
+.metrics-item {
+  grid-area: metrics;
+}
 .footer-item {
   grid-area: footer;
+}
+.info-background {
+  background: #301934;
+  background-image: url('https://i.ytimg.com/vi/tiZUy7oH0qI/maxresdefault.jpg');
+  background-image: linear-gradient(to right,#301934,transparent), url('https://i.ytimg.com/vi/tiZUy7oH0qI/maxresdefault.jpg');
 }
