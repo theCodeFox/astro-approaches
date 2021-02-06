@@ -15,7 +15,6 @@ def asteroid_data():
     # next week's close encounters
     with urlopen('https://api.nasa.gov/neo/rest/v1/feed?start_date='+today+'&api_key='+api_key) as r:
         text = r.read()
-        # object [ date: boolean ]
         close_approaches_list = json.loads(text)['near_earth_objects']
         ca_data = {}
         hca_data = {}
@@ -30,6 +29,7 @@ def asteroid_data():
                     hca_by_date.append(cas['is_potentially_hazardous_asteroid'])
             ca_data[dates] = len(ca_by_date)
             hca_data[dates] = len(hca_by_date)
+        # build data dict
         data['ca'] = ca_data
         data['hca'] = hca_data
     return data
