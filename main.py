@@ -3,6 +3,11 @@
 # import flask to run & request to get data from API
 from flask import Flask, render_template
 from urllib.request import urlopen
+import datetime
+
+# variables needed for NEO API call
+api_key = open('API_Key.txt','r').read()
+today = datetime.date.today().strftime('%Y-%m-%d')
 
 # Flask object (helps determine route path)
 app = Flask(__name__)
@@ -15,9 +20,11 @@ def index():
     return render_template('main.html')
 
 # get asteroid info from NEO
-@app.route('/json-example')
-def json_example():
-    with urlopen('') as text = r.read()
+@app.route('/asteroid_data')
+def asteroid_data():
+    # next week's close encounters
+    with urlopen('https://api.nasa.gov/neo/rest/v1/feed?start_date='+today+'&api_key='+api_key) as r:
+        text = r.read()
     return text
 
 # quick variable example
