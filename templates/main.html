@@ -23,7 +23,41 @@
     <div class="main-image-item info-background"></div>
 
     <div class="metrics-item">
-        <h2>Close Approaches</h2>
+        <h2>Close Approaches Next Week</h2>
+
+        <p>Close Approaches</p>
+        <table>
+            <tr>
+                {% for key, value in data['ca'].items() %}
+                <td> {{ value[1] }} </td>
+                {% endfor %}
+                <td>Total</td>
+            </tr>
+            <tr>
+                {% for key, value in data['ca'].items() %}
+                <td> {{ value[0] }} </td>
+                {% endfor %}
+                <td>{{ data['total_cas'] }}</td>
+            </tr>
+         </table>
+
+         <br>
+
+         <p>Potentially Hazardous Close Approaches</p>
+         <table>
+            <tr>
+                {% for key, value in data['hca'].items() %}
+                <td> {{ value[1] }} </td>
+                {% endfor %}
+                <td>Total</td>
+            </tr>
+            <tr>
+                {% for key, value in data['hca'].items() %}
+                <td> {{ value[0] }} </td>
+                {% endfor %}
+                <td>{{ data['total_hcas'] }}</td>
+            </tr>
+         </table>
 
     </div>
 

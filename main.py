@@ -17,21 +17,28 @@ def asteroid_data():
         text = r.read()
         close_approaches_list = json.loads(text)['near_earth_objects']
         ca_data = {}
+        total_cas = 0
         hca_data = {}
+        total_hcas = 0
         data = {}
         # filtered data
         for dates in close_approaches_list:
+            date = datetime.datetime.strptime(dates,'%Y-%m-%d').strftime('%d %b')
             ca_by_date = []
             hca_by_date = []
             for cas in close_approaches_list[dates]:
                 ca_by_date.append(cas['is_potentially_hazardous_asteroid'])
                 if cas['is_potentially_hazardous_asteroid'] == True:
                     hca_by_date.append(cas['is_potentially_hazardous_asteroid'])
-            ca_data[dates] = len(ca_by_date)
-            hca_data[dates] = len(hca_by_date)
+            total_cas = total_cas + len(ca_by_date)
+            total_hcas = total_hcas + len(hca_by_date)
+            ca_data[dates] = [len(ca_by_date),date]
+            hca_data[dates] = [len(hca_by_date),date]
         # build data dict
-        data['ca'] = ca_data
-        data['hca'] = hca_data
+        data['ca'] = dict(sorted(ca_data.items()))
+        data['hca'] = dict(sorted(hca_data.items()))
+        data['total_cas'] = total_cas
+        data['total_hcas'] = total_hcas
     return data
 
 # Flask object (helps determine route path)
