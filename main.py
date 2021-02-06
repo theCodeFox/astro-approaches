@@ -25,7 +25,9 @@ def asteroid_data():
     # next week's close encounters
     with urlopen('https://api.nasa.gov/neo/rest/v1/feed?start_date='+today+'&api_key='+api_key) as r:
         text = r.read()
-    return text
+        print(text)
+    # return text
+asteroid_data()
 
 # quick variable example
 # @app.route('/profile/<user>')

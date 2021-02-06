@@ -11,13 +11,17 @@ div {
 .main-grid {
     display: grid;
     justify-content: center;
-    margin: 0;
+    max-width: 800px;
+    min-height: 100vh;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    margin: 0 auto;
     padding: 0;
-    grid-template-columns: 10% 40% 40% 10%;
+    grid-template-columns: 50% 50%;
     grid-template-areas:
-    'left main main-image right'
-    'left metrics metrics right'
-    'left footer footer right';
+    'main main-image'
+    'metrics metrics'
+    'footer footer';
 }
 .main-item {
   grid-area: main;
@@ -35,11 +39,10 @@ div {
   grid-area: footer;
   background: #301934;
   font-size: xx-small;
-  padding: 1em;
+  padding: 1em 1em 0 1em;
 }
 .info-background {
   background: #301934;
   background-image: url('https://i.ytimg.com/vi/tiZUy7oH0qI/maxresdefault.jpg');
   background-image: linear-gradient(to right,#301934,transparent), url('https://i.ytimg.com/vi/tiZUy7oH0qI/maxresdefault.jpg');
-  /* background-image: linear-gradient(to right top, #301934 20%,transparent 100%), url('https://i.ytimg.com/vi/tiZUy7oH0qI/maxresdefault.jpg'); */
 }
