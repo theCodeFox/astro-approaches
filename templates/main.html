@@ -10,7 +10,7 @@
     <div class="main-item">
         <h2>Asteroid Info</h2>
         <p>
-            The majority of the known asteroids in the Solar System orbit the Sun in a band between Mars and Jupiter. This band is commonly referred to as the Asteroid Belt.
+            The majority of the known asteroids in the Solar System orbit the Sun in a band between Mars and Jupiter. This band is commonly referred to as the Asteroid Belt. Asteroids that come closer to Earth are called close approaches and can be considered potentially hazardous if they enter our atmosphere.
         </p>
         <p>
             Although there are hundreds of thousands of asteroids in the Asteroid Belt, there are only around 200 that exceed 100 km in diameter, making the majority of the asteroids realtively small objects.
@@ -25,47 +25,48 @@
     <div class="metrics-item">
         <h2>Close Approaches Next Week</h2>
 
-        <p>Close Approaches</p>
+        <h3>Close Approaches</h3>
         <table>
             <tr>
                 {% for key, value in data['ca'].items() %}
-                <td> {{ value[1] }} </td>
+                <td class="right-border bottom-border"> {{ value[1] }} </th>
                 {% endfor %}
-                <td>Total</td>
+                <th class="bottom-border">Total</td>
             </tr>
             <tr>
                 {% for key, value in data['ca'].items() %}
-                <td> {{ value[0] }} </td>
+                <td class="right-border"> {{ value[0] }} </td>
                 {% endfor %}
-                <td>{{ data['total_cas'] }}</td>
+                <th>{{ data['total_cas'] }}</th>
             </tr>
          </table>
 
          <br>
 
-         <p>Potentially Hazardous Close Approaches</p>
+         <h3>Potentially Hazardous Close Approaches</h3>
          <table>
             <tr>
                 {% for key, value in data['hca'].items() %}
-                <td> {{ value[1] }} </td>
+                <td class="right-border bottom-border"> {{ value[1] }} </td>
                 {% endfor %}
-                <td>Total</td>
+                <th class="bottom-border">Total</th>
             </tr>
             <tr>
                 {% for key, value in data['hca'].items() %}
-                <td> {{ value[0] }} </td>
+                <td class="right-border"> {{ value[0] }} </td>
                 {% endfor %}
-                <td>{{ data['total_hcas'] }}</td>
+                <th>{{ data['total_hcas'] }}</th>
             </tr>
          </table>
 
     </div>
 
     <footer class="footer-item">
-        <h3>Sources</h3>
         <p>
-            Info: <a href="https://theplanets.org/asteroids/" alt="the planets dot org">The Planets</a>
-            <br>
+            This is a practice site in Flask built for learning purposes only. The info in the first section is from
+            <a href="https://theplanets.org/asteroids/"> theplanets.org </a>
+            & the data used for the second section is from
+            <a href="https://catalog.data.gov/id/dataset/asteroids-neows-api"> Asteroids - NeoWs API</a>.
         </p>
     </footer>
 

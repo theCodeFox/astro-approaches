@@ -12,14 +12,28 @@ table {
   justify-content: space-evenly;
   text-align: center;
 }
+a {
+  text-decoration: none;
+  color: #f0f8ff;
+}
+h3, h2, h1 {
+  padding: 0;
+  margin: 0.5em 0;
+}
 
+.right-border {
+  border-right: 1px solid #f0f8ff;
+}
+.bottom-border {
+  border-bottom: 1px solid #f0f8ff;
+}
 .main-grid {
     display: grid;
     justify-content: center;
     max-width: 800px;
     min-height: 100vh;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
+    border-left: 1px solid #f0f8ff;
+    border-right: 1px solid #f0f8ff;
     margin: 0 auto;
     padding: 0;
     grid-template-columns: 50% 50%;
@@ -38,13 +52,14 @@ table {
 }
 .metrics-item {
   grid-area: metrics;
-  background: #301934;
+  background: #190d1b;
 }
 .footer-item {
   grid-area: footer;
-  background: #301934;
+  background: #0b060c;
   font-size: xx-small;
-  padding: 1em 1em 0 1em;
+  text-align: center;
+  padding: 0 1em 0 1em;
 }
 .info-background {
   background: #301934;
