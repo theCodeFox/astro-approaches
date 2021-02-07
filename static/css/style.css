@@ -53,6 +53,14 @@ h3, h2, h1 {
 .metrics-item {
   grid-area: metrics;
   background: #190d1b;
+  display: flex;
+  justify-content: space-evenly;
+}
+.ca-metrics {
+  width: 50%;
+}
+.hca-metrics {
+  width: 50%;
 }
 .footer-item {
   grid-area: footer;
@@ -65,4 +73,15 @@ h3, h2, h1 {
   background: #301934;
   background-image: url('https://i.ytimg.com/vi/tiZUy7oH0qI/maxresdefault.jpg');
   background-image: linear-gradient(to right,#301934,transparent), url('https://i.ytimg.com/vi/tiZUy7oH0qI/maxresdefault.jpg');
+}
+
+#ca-chart {
+  width: 80%;
+  height: 400px;
+  margin: 0 10%;
+}
+#hca-chart {
+  width: 80%;
+  height: 400px;
+  margin: 0 10%;
 }
