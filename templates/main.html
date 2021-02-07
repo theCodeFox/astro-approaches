@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Astro Approaches</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+</head>
+
+<body class="main-grid">
+
+    <div class="main-item">
+        <h2>Asteroid Info</h2>
+        <p>
+            The majority of the known asteroids in the Solar System orbit the Sun in a band between Mars and Jupiter. This band is commonly referred to as the Asteroid Belt. Asteroids that come closer to Earth are called close approaches and can be considered potentially hazardous if they enter our atmosphere.
+        </p>
+        <p>
+            Although there are hundreds of thousands of asteroids in the Asteroid Belt, there are only around 200 that exceed 100 km in diameter, making the majority of the asteroids realtively small objects.
+        </p>
+        <p>
+            Current theories suggest that the asteroids found in the Asoteroid Belt are the remnants of a planet that failed to form during the development of our Solar System. More specifically, it is believed that when Jupiter formed, its huge mass and gravitational pull disrupted the material in the Asteroid Belt to accrete, or join together, to form into a planet. If all the material in the Asteroid Belt were to be combined, the resulting object’s diameter would be about half that of Earth’s moon.
+        </p>
+    </div>
+
+    <div class="main-image-item info-background"></div>
+
+    <div class="metrics-item">
+        <!-- <h2>Close Approaches Next Week</h2> -->
+
+        <div class="ca-metrics">
+
+            <div class="chart-title">
+                <h3>Close Approaches</h3>
+                <button>Total: {{ data['total_cas'] }}</button>
+            </div>
+
+            <canvas id="ca-chart"></canvas>
+        
+            <table>
+                <tr>
+                    {% for key, value in data['ca'].items() %}
+                    <td class="right-border bottom-border"> {{ value[1] }} </th>
+                    {% endfor %}
+                    <th class="bottom-border">Total</td>
+                </tr>
+                <tr>
+                    {% for key, value in data['ca'].items() %}
+                    <td class="right-border"> {{ value[0] }} </td>
+                    {% endfor %}
+                    <th>{{ data['total_cas'] }}</th>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="hca-metrics">
+
+            <div class="chart-title">
+                <h3>Potentially Hazardous CAs</h3>
+                <button>Total: {{ data['total_hcas'] }}</button>
+            </div>
+
+            <canvas id="hca-chart"></canvas>
+
+            <table>
+                <tr>
+                    {% for key, value in data['hca'].items() %}
+                    <td class="right-border bottom-border"> {{ value[1] }} </td>
+                    {% endfor %}
+                    <th class="bottom-border">Total</th>
+                </tr>
+                <tr>
+                    {% for key, value in data['hca'].items() %}
+                    <td class="right-border"> {{ value[0] }} </td>
+                    {% endfor %}
+                    <th>{{ data['total_hcas'] }}</th>
+                </tr>
+            </table>
+        </div>
+
+        <script>
+            // ca bar chart data
+            const ca_barData = {
+                labels : [
+                {% for key, value in data['ca'].items()  %}
+                    "{{ value[1] }}",
+                {% endfor %}
+        	    ],
+                datasets : [{
+                    fillColor: "rgba(255,255,255,0.2)",
+                    strokeColor: "rgba(255,255,255,1)",
+                    pointColor: "rgba(255,255,255,1)",
+                    data : [
+                        {% for key, value in data['ca'].items()  %}
+                            "{{ value[0] }}",
+                        {% endfor %}
+	                    ]
+                    }]
+                }
+
+            const hca_barData = {
+                labels : [
+                {% for key, value in data['hca'].items()  %}
+                    "{{ value[1] }}",
+                {% endfor %}
+        	    ],
+                datasets : [{
+                    fillColor: "rgba(255,255,255,0.2)",
+                    strokeColor: "rgba(255,255,255,1)",
+                    pointColor: "rgba(255,255,255,1)",
+                    data : [
+                        {% for key, value in data['hca'].items()  %}
+                            "{{ value[0] }}",
+                        {% endfor %}
+	                    ]
+                    }]
+                }
+
+            // get bar chart canvas
+            const ca_chart = document.getElementById("ca-chart").getContext("2d");
+            const hca_chart = document.getElementById("hca-chart").getContext("2d");
+
+            steps = 5
+            ca_max = {{ data['max_ca'] }}
+            hca_max = {{ data['max_hca'] }}
+
+            // draw ca bar chart
+            new Chart(ca_chart).Bar(ca_barData, {
+                scaleOverride: true,
+                scaleSteps: steps,
+                scaleStepWidth: Math.ceil(ca_max / steps),
+                scaleStartValue: 0,
+                scaleShowVerticalLines: true,
+                scaleShowGridLines : true,
+                barShowStroke : true,
+                scaleShowLabels: false
+            });
+
+            // draw hca bar chart
+            new Chart(hca_chart).Bar(hca_barData, {
+                scaleOverride: true,
+                scaleSteps: steps,
+                scaleStepWidth: Math.ceil(ca_max / steps),
+                scaleStartValue: 0,
+                scaleShowVerticalLines: true,
+                scaleShowGridLines : true,
+                barShowStroke : true,
+                scaleShowLabels: false
+            });
+
+        </script>
+
+    </div>
+
+    <footer class="footer-item">
+        <p>
+            This is a practice site in Flask built for learning purposes only. The info in the first section is from
+            <a href="https://theplanets.org/asteroids/"> theplanets.org </a>
+            & the data used for the second section is from
+            <a href="https://catalog.data.gov/id/dataset/asteroids-neows-api"> Asteroids - NeoWs API</a>. The js chart class is from
+            <a href="https://cdnjs.cloudflare.com"> Cloud Flare</a>
+        </p>
+    </footer>
+
+</body>
+</html>
