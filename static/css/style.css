@@ -54,13 +54,14 @@ h3, h2, h1 {
   grid-area: metrics;
   background: #190d1b;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 .ca-metrics {
-  width: 50%;
+  width: 45%;
 }
 .hca-metrics {
-  width: 50%;
+  width: 45%;
 }
 .footer-item {
   grid-area: footer;
