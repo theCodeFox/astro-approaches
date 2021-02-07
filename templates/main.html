@@ -27,8 +27,11 @@
         <!-- <h2>Close Approaches Next Week</h2> -->
 
         <div class="ca-metrics">
-            <h3>Close Approaches</h3>
-            <p>Total: {{ data['total_cas'] }}</p>
+
+            <div class="chart-title">
+                <h3>Close Approaches</h3>
+                <button>Total: {{ data['total_cas'] }}</button>
+            </div>
 
             <canvas id="ca-chart"></canvas>
         
@@ -49,8 +52,11 @@
         </div>
         
         <div class="hca-metrics">
-            <h3>Potentially Hazardous Close Approaches</h3>
-            <p>Total: {{ data['total_hcas'] }}</p>
+
+            <div class="chart-title">
+                <h3>Potentially Hazardous CAs</h3>
+                <button>Total: {{ data['total_hcas'] }}</button>
+            </div>
 
             <canvas id="hca-chart"></canvas>
 
